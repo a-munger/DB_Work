@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="ExampleService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:30659/ExampleService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:30659/ExampleService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:30659/ExampleService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WcfTrainingExample" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IExampleService_TestServiceWebGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceWebGet" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_TestServiceWebGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceWebGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_TestServiceWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceWebPost" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_TestServiceWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_TestService_InputMessage">
+    <wsdl:part name="parameters" element="tns:TestService" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_TestService_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TestServiceResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_FibonacciWebGet_InputMessage">
+    <wsdl:part name="parameters" element="tns:FibonacciWebGet" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_FibonacciWebGet_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FibonacciWebGetResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_FibonacciWebPost_InputMessage">
+    <wsdl:part name="parameters" element="tns:FibonacciWebPost" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_FibonacciWebPost_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FibonacciWebPostResponse" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_Fibonacci_InputMessage">
+    <wsdl:part name="parameters" element="tns:Fibonacci" />
+  </wsdl:message>
+  <wsdl:message name="IExampleService_Fibonacci_OutputMessage">
+    <wsdl:part name="parameters" element="tns:FibonacciResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IExampleService">
+    <wsdl:operation name="TestServiceWebGet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/TestServiceWebGet" message="tns:IExampleService_TestServiceWebGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/TestServiceWebGetResponse" message="tns:IExampleService_TestServiceWebGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceWebPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/TestServiceWebPost" message="tns:IExampleService_TestServiceWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/TestServiceWebPostResponse" message="tns:IExampleService_TestServiceWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TestService">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/TestService" message="tns:IExampleService_TestService_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/TestServiceResponse" message="tns:IExampleService_TestService_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FibonacciWebGet">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/FibonacciWebGet" message="tns:IExampleService_FibonacciWebGet_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/FibonacciWebGetResponse" message="tns:IExampleService_FibonacciWebGet_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="FibonacciWebPost">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/FibonacciWebPost" message="tns:IExampleService_FibonacciWebPost_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/FibonacciWebPostResponse" message="tns:IExampleService_FibonacciWebPost_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="Fibonacci">
+      <wsdl:input wsaw:Action="http://tempuri.org/IExampleService/Fibonacci" message="tns:IExampleService_Fibonacci_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IExampleService/FibonacciResponse" message="tns:IExampleService_Fibonacci_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="appEndpoint" type="tns:IExampleService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="TestServiceWebGet">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/TestServiceWebGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestServiceWebPost">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/TestServiceWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TestService">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/TestService" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FibonacciWebGet">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/FibonacciWebGet" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="FibonacciWebPost">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/FibonacciWebPost" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Fibonacci">
+      <soap:operation soapAction="http://tempuri.org/IExampleService/Fibonacci" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ExampleService">
+    <wsdl:port name="appEndpoint" binding="tns:appEndpoint">
+      <soap:address location="http://localhost:30659/ExampleService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

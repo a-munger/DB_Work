@@ -1,0 +1,35 @@
+﻿body, div, input {
+    font-family: Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+div, input, textarea {
+    border: 1px solid black;
+}
+
+div {
+    display: inline-block;
+    width: 800px;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
+input, textarea {
+    -ms-border-radius: 2px;
+    border-radius: 2px;
+}
+
+textarea {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: Courier, monospace;
+    font-size: 12px;
+    margin: 5px;
+    width: 785px;
+    height: 300px;
+}
+
+.error {
+    color: red;
+}

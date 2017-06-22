@@ -1,0 +1,34 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test Client for WCF Service</title>
+    <link type="text/css" rel="stylesheet" href="./Styles/ExampleService.css"/>
+    <script type="text/javascript" src="./Scripts/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="./Scripts/ExampleService.js"></script>
+</head>
+<body>
+    <form method="POST" action="#">
+        <div id="testServiceDiv">
+            <p style="text-align: center;">Simple Service Test</p>
+            Test Data: <input type="text" name="testData" id="testData" value="Web Client Test Data" />
+            <input class="testButtons" type="button" name="btnTestGet" id="btnTestGet" value="Test (GET)" data-method="TestServiceGet" data-source="testData" data-option="testData" data-destination="testServiceResults" />
+            <input class="testButtons" type="button" name="btnTestPost" id="btnTestPost" value="Test (POST)" data-method="TestServicePost" data-source="testData" data-option="testData" data-destination="testServiceResults" />
+            <br/>
+            <textarea name="testServiceResults" id="testServiceResults"></textarea>
+        </div>
+        <div id="fibonacciDiv">
+            <p style="text-align: center;">Fibonacci Calculations</p>
+            Number to calculate: <input type="number" max="40" name="testNumber" id="testNumber" value="40"/>
+            Use Recursion?
+            <select name="useRecursion" id="useRecursion">
+                <option value="true" selected="selected">Y</option>
+                <option value="false">N</option>
+            </select>
+            <input class="testButtons" type="button" name="btnFibonacciGet" id="btnFibonacciGet" value="Fibonacci (GET)" data-method="FibonacciGet" data-destination="fibonacciResults" data-source="testNumber" data-option="useRecursion" />
+            <input class="testButtons" type="button" name="btnFibonacciPost" id="btnFibonacciPost" value="Fibonacci (POST)" data-method="FibonacciPost" data-destination="fibonacciResults" data-source="testNumber" data-option="useRecursion" />
+            <br />
+            <textarea name="fibonacciResults" id="fibonacciResults"></textarea>
+        </div>
+    </form>
+</body>
+</html>
