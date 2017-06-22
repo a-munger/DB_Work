@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>AGP Check</title>	
+	<script type="text/javascript" src="\\agp-emdev1-corp\AGP exe\EForm\angularjs\1.5.7\angular.min.js"></script>
+    <script type="text/javascript" src="\\agp-emdev1-corp\AGP exe\EForm\jquery\3.1.1\jquery.min.js"></script>
+    <link rel="stylesheet" href="\\agp-emdev1-corp\AGP exe\EForm\jqueryui\1.12.1\themes\smoothness\jquery-ui.css">
+	<script type="text/javascript" src="\\agp-emdev1-corp\AGP exe\EForm\jqueryui\1.12.1\jquery-ui.min.js"></script>
+	<link rel="stylesheet" href="\\agp-emdev1-corp\AGP exe\EForm\style\main.css">
+	
+  <script type="text/javascript">	
+		
+		function setDateTime() {
+            var d = new Date();
+            var currday = d.getDate();;
+            var currmonth = d.getMonth();
+            currmonth++;
+            var curryear = d.getFullYear();
+            var currdate = (currmonth + "/" + currday + "/" + curryear);
+
+            var currHour = d.getHours();
+            var currHourStr = currHour;
+            if (currHour.toString().length < 2) {
+                currHourStr = "0" + currHour;
+            }
+            var currMin = d.getMinutes();
+            var currMinStr = currMin;
+            if (currMin.toString().length < 2) {
+                currMinStr = "0" + currMin;
+            }
+            var currTime = (currHourStr + ":" + currMinStr);
+            document.getElementById("currentDate").value = (formatDate(currdate) + " " + currTime);
+        }
+
+        function formatDate(str) {
+            var s = String(str).split(/[-\/., ]/);
+
+            var mm = parseInt(parseFloat(s[0]));
+            var dd = parseInt(parseFloat(s[1]));
+            var yyyy = parseInt(parseFloat(s[2]));
+
+            if (mm.toString().length > 2) {
+                alert("Invalid Month (MM/DD/YYYY)");
+            }
+            if (mm > 12) {
+                alert("Invalid Month (MM/DD/YYYY)");
+            }
+            if (dd.toString().length > 2) {
+                alert("Invalid Day (MM/DD/YYYY)");
+            }
+            if (dd > 31) {
+                alert("Invalid Day (MM/DD/YYYY)");
+            }
+            if (yyyy.toString().length > 4) {
+                alert("Invalid Year (MM/DD/YYYY)");
+            }
+            if (yyyy.toString().length < 4) {
+                alert("Invalid Year (MM/DD/YYYY)");
+            }
+
+            var mmStr = mm;
+            var ddStr = dd;
+            if (mm.toString().length < 2) {
+                mmStr = "0" + mm;
+            }
+            if (dd.toString().length < 2) {
+                ddStr = "0" + dd;
+            }
+
+            var dateStr = mmStr + "/" + ddStr + "/" + yyyy;
+
+            return dateStr;
+        }
+  
+		//Function: toggleProperties
+        //Description: Toggles Show/Hide OnBase hidden property fields
+        //Requires jquery.js (jquery.min.js) library
+        //Parameters:  none
+        function toggleProperties() {
+            if (event.type == "keyup" && event.ctrlKey && event.shiftKey && event.keyCode == 69) {
+                var divHiddenFields = $("#divProperties");
+                if ($(divHiddenFields).is(":visible") == false) {
+                    $(divHiddenFields).show();
+                } else { $(divHiddenFields).hide(); }
+            }
+            return true;
+        }
+		
+		var app = angular.module('myApp', []);
+		app.controller('myCtrl', function($scope, $http) {
+
+			function convert_number(number)
+			{
+
+			   if ((number < 0) || (number > 999999999)) 
+				{ 
+				return "Number is out of range";
+				}
+				var Gn = Math.floor(number / 1000000);  /* Crore */ 
+				number -= Gn * 10000000; 
+				var kn = Math.floor(number / 100000);     /* lakhs */ 
+				number -= kn * 100000; 
+				var Hn = Math.floor(number / 1000);      /* thousand */ 
+				number -= Hn * 1000; 
+				var Dn = Math.floor(number / 100);       /* Tens (deca) */ 
+				number = number % 100;               /* Ones */ 
+				var tn= Math.floor(number / 10); 
+				var one=Math.floor(number % 10); 
+				var res = ""; 
+
+				if (Gn>0) 
+				{ 
+					res += (convert_number(Gn) + " Million"); 
+				} 
+				if (kn>0) 
+				{ 
+						res += (((res=="") ? "" : " ") + 
+						convert_number(kn) + " Hundred Thousand"); 
+				} 
+				if (Hn>0) 
+				{ 
+					res += (((res=="") ? "" : " ") +
+						convert_number(Hn) + " Thousand"); 
+				} 
+
+				if (Dn) 
+				{ 
+					res += (((res=="") ? "" : " ") + 
+						convert_number(Dn) + " hundred"); 
+				} 
+
+
+				var ones = Array("", "One", "Two", "Three", "Four", "Five", "Six","Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen","Fourteen", "Fifteen", "Sixteen", "Seventeen", "Eightteen","Nineteen"); 
+				var tens = Array("", "", "Twenty", "Thirty", "Fourty", "Fifty", "Sixty","Seventy", "Eigthy", "Ninety"); 
+				
+				if (tn>0 || one>0) 
+				{ 
+					if (!(res=="")) 
+					{ 
+						res += " and "; 
+					} 
+					if (tn < 2) 
+					{ 
+						res += ones[tn * 10 + one]; 
+					} 
+					else 
+					{ 
+
+						res += tens[tn];
+						if (one>0) 
+						{ 
+							res += ("-" + ones[one]); 
+						} 
+					} 
+				}
+				
+				if (res=="")
+				{ 
+					res = "zero"; 
+				} 
+				return res;
+			}
+			
+
+			function formatCheckDate(date) {
+			  var monthNames = [
+				"JAN", "FEB", "MAR",
+				"APR", "MAY", "JUN", "JUL",
+				"AUG", "SEP", "OCT",
+				"NOV", "DEC"
+			  ];
+			  
+			  var tempDate = new Date(date);
+
+			  var day = tempDate.getDate();
+			  var monthIndex = tempDate.getMonth();
+			  var year = tempDate.getFullYear();
+
+			  return day + '-' + monthNames[monthIndex] + '-' + year;
+			}
+			
+			$scope.checkDate = formatCheckDate(document.getElementById('checkDate').value);
+			$scope.checkNumber = document.getElementById('checkNumber').value;
+			var tempCheckAmt = document.getElementById('checkAmount').value;
+			tempCheckAmt = tempCheckAmt.replace(',', '');
+			tempCheckAmt = tempCheckAmt.replace('$', '');
+			
+			$scope.checkAmount = tempCheckAmt;
+			$scope.checkClearDate = formatCheckDate(document.getElementById('checkClearDate').value);
+
+			$scope.checkType = document.getElementById('checkType').value;
+			$scope.vendorName = document.getElementById('vendorName').value;
+			$scope.address1 = document.getElementById('address1').value;
+			$scope.address2 = document.getElementById('address2').value;
+			$scope.address3 = document.getElementById('address3').value;
+			$scope.city = document.getElementById('city').value;
+			$scope.state = document.getElementById('state').value;
+			$scope.zip = document.getElementById('zip').value;
+			
+			$scope.updatedDate = document.getElementById('updateDate').value;
+			
+			var numarray = $scope.checkAmount.split('.');
+			
+
+			$scope.wordAmount = convert_number(parseInt(numarray[0])).toUpperCase() + ' DOLLARS AND ' + convert_number(parseInt(numarray[1])).toUpperCase() + ' CENTS';
+			
+			var jsonString = $("#txtJsonString").val();
+			
+			$scope.totalJSON = angular.fromJson(jsonString);
+			
+			$scope.invoices = [];
+			$scope.total = 0;
+			$scope.discount = 0;
+			
+			alert(JSON.stringify($scope.totalJSON.Invoices[0]));
+			
+			for(var i=0; i < $scope.totalJSON.Invoices.length; i++)
+			{		
+				$scope.invoices = $scope.totalJSON.Invoices;
+			}
+			
+			for(var i=0; i < $scope.invoices.length; i++)
+			{
+				$scope.total += parseFloat($scope.invoices[i].NetAmount);
+				$scope.discount += parseFloat($scope.invoices[i].Discount);
+			}
+			
+			//angularVariables();
+				
+			$(document).ready(function () {
+				
+					
+				$(document).keyup(toggleProperties);
+				
+				$("#mainfrm").submit(function (event) {
+					var bValid = true;
+
+					if ($(":input[type=submit]:focus").attr("id") != "btnCancelForm") {
+						
+						$scope.addDate();
+						
+						$scope.submit();
+					}
+					return bValid;
+				});
+			});
+			
+		});
+	
+  </script>
+	
+</head>
+<body style="width: 1000px;">
+	<!-- 680px will print on a 8/11 standard margins -->
+    <!-- ---------------------- -->
+    <!-- Main form body  BEGIN -->
+    <!-- ---------------------- -->
+    <form id="mainfrm" name="mainfrm" method="post" ng-app="myApp" ng-controller="myCtrl">
+        <!-- ---------------------------------------------- -->
+        <!-- ------- Onbase Hidden Properties BEGIN ------- -->
+        <!-- ---------------------------------------------- -->
+        <!-- Modify these for your form -->
+        <div id="divProperties" style="display: none; width: 680px;">
+            <table>
+                <colgroup>
+                    <col width="25%" align="left" valign="middle" />
+                    <col width="30%" align="left" valign="middle" />
+                    <col width="45%" align="left" valign="middle" />
+                </colgroup>
+                <tr>
+                    <td></td>
+                    <td>
+                        Document Date:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyDocumentDate" name="OBProperty_DocumentDate" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Date Stored:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyDateStored" name="OBProperty_DateStored" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Time Stored:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyTimeStored" name="OBProperty_TimeStored" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Created By:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyUserName" name="OBProperty_UserName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        ItemNum:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyItemNum" name="OBProperty_ItemNum" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        RevisionComment:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyRevisionComment" name="OBProperty_RevisionComment" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Current User ID:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyCurrentUserID" name="OBProperty_CurrentUserID" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Current User Name:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyCurrentUserName" name="OBProperty_CurrentUserName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Current User Real Name:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyCurrentUserRealName" name="OBProperty_CurrentUserRealName" />
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        Current User Display Name:
+                    </td>
+                    <td>
+                        <input type="text" id="OBPropertyCurrentDisplayName" name="OBProperty_CurrentDisplayName" />
+                    </td>
+                </tr>
+				<tr>
+					<td>
+						Current Date:
+					</td>
+					<td>
+						<input type="text" name="currentDate" id="currentDate" />
+					</td>
+				</tr>
+				<tr>
+					<td>
+						Hidden JSON String:
+					</td>
+					<td>
+						<textarea rows="2" class="fullwidth" name="txtJsonString" id="txtJsonString"></textarea>
+					</td>
+				</tr>
+            </table>
+        </div>
+        <!-- ---------------------------------------------- -->
+        <!-- -------- OnBase Hidden Properties END -------- -->
+        <!-- ---------------------------------------------- -->
+        <div id="divMainFrm">
+            <div id="header">
+                <header class="center">
+                    <!-- -------------------------------------------- -->
+                    <!-- Form Title and Submit/Cancel buttons - BEGIN -->
+                    <!-- -------------------------------------------- -->
+                    <IMG style="position:absolute; left: 0%; z-index:-1;" src="\\agp-emdev1-corp\AGP exe\EForm\Images\AGPHeader.png">
+					<h1 align="right">NO. <span style="color: #ff0000">{{checkNumber}}</span></h1>
+					
+                    <!-- ------------------------------------------ -->
+                    <!-- Form Title and Submit/Cancel buttons - END -->
+                    <!-- ------------------------------------------ -->
+                </header>
+            </div>
+			<br/>
+			<br/>
+			<div id="infoTable">
+				<table border="1" border-style="solid" align="right" width="500px">
+					<thead>
+						<th>CHECK DATE</th>
+						<th>CHECK NUMBER</th>
+						<th>CHECK AMOUNT</th>
+					</thead>
+					<tbody>
+						<tr>
+							<input type="text" style="display: none;" id="checkDate" name="OBKEY_AP_CHECK_DATE_1" />
+							<td align="center">{{checkDate}}</td>
+							
+							<input type="text" style="display: none;" id="checkNumber" name="OBKEY_AP_CHECK_NUMBER_1" />
+							<td align="center">{{checkNumber}}</td>
+							
+							<input type="text" style="display: none;" id="checkAmount" name="OBKEY_AP_CHECK_AMOUNT_1" />
+							<td align="center">*****${{checkAmount  | number:2}}</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+				<br/>
+				<br/>
+				<br/>
+			<div>
+				<p align="left">{{wordAmount}}*****</p>
+				<table width="100%">
+					<tbody>
+						<tr>
+							<td align="center" width="100px">PAY<br/>  TO<br/>  THE<br/>  ORDER<br/>  OF</td>
+							<input type="text" style="display: none;" id="vendorName" name="OBKEY_SUPPLIER_NAME_1" />
+							<input type="text" style="display: none;" id="address1" name="OBKEY_AP_ADDRESS_1_1" />
+							<input type="text" style="display: none;" id="address2" name="OBKEY_AP_ADDRESS_2_1" />
+							<input type="text" style="display: none;" id="address3" name="OBKEY_AP_ADDRESS_3_1" />
+							<input type="text" style="display: none;" id="city" name="OBKEY_AP_CITY_1" />
+							<input type="text" style="display: none;" id="state" name="OBKEY_AP_STATE_NAME_1"/>
+							<input type="text" style="display: none;" id="zip" name="OBKEY_AP_ZIP_1"/>
+							<td align="left"width="250px">{{vendorName}}<br/> {{address1}}<br/> {{address2}} {{address3}}<br/> {{city}} {{state}} {{zip}}</td>
+							
+							<input type="text" style="display: none;" id="checkClearDate" name="OBKEY_AP_CHECK_CLEARED_DATE_1" />
+							<td align="right">{{checkClearDate}}</td>
+							
+							<input type="text" style="display: none;" id="checkType" name="OBKEY_AP_CHECK_TYPE_1" />
+							<td align="center">{{checkType}}</td>
+							<td align="right"><IMG src="\\agp-emdev1-corp\AGP exe\EForm\Images\signature.png"></td>
+						</tr>
+					</tbody>
+				</table>
+				<br/>
+				<table width="100%">
+					<tbody>
+						<tr style="font-size: 12px;">
+							<td align="left" width="100px"><IMG src="\\agp-emdev1-corp\AGP exe\EForm\Images\AGPEmblem.jpg"></td>
+							
+							
+							<td align="left"width="250px">{{checkDate}}</td>
+							<td align="left">{{vendorName}}</td>
+							<input type="text" style="display: none;" id="updateDate" name="OBKEY_AP_LAST_DATE_MODIFIED_1" />
+							<td align="center">Updated: {{updatedDate}}</td>
+							<td align="right"width="250px">{{checkNumber}}</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<br/>
+			
+			<div id="InvoiceTable">
+				<table class="invoiceTable" border="0" border-style="solid">
+					<thead>
+						<th class="headerCells">INVOICE NO.</th>
+						<th class="headerCells">INVOICE DATE</th>
+						<th class="headerCells">DESCRIPTION</th>
+						<th class="headerCells">DISCOUNT</th>
+						<th class="headerCells">NET AMOUNT</th>
+					</thead>
+					<tfoot align="right">
+						<tr>
+							<td class="emptyCell"></td>
+							<td class="emptyCell"></td>
+							<td class="emptyCell" style="padding-right:10px;">Thank You.</td>
+							<td class="totalFoot">{{sumDiscount() | number:2}}</td>
+							<td class="totalFoot">{{sumTotal()  | number:2}}</td>
+						</tr>
+					</tfoot>
+					<tbody ng-repeat="invoice in invoices">
+						<tr class="noBorder">
+							<td class="headerCells" align="center">{{invoice.InvoiceNo}}</td>
+							<td class="headerCells" align="center">{{invoice.InvoiceDate}}</td>
+							<td class="headerCells" align="center">{{invoice.Description}}</td>
+							<td class="headerCells" align="center">{{invoice.Discount}}</td>
+							<td class="headerCells" align="center">{{invoice.NetAmount}}</td>
+						</tr>						
+					</tbody>
+				</table>
+			</div>
+			<br/>
+    </form>
+    <!-- ---------------------- -->
+    <!-- --Main form body End-- -->
+    <!-- ---------------------- -->
+</body>
+</html>

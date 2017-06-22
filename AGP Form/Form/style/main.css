@@ -1,0 +1,378 @@
+.redbutton {
+	color: Black;
+	font-weight: bold;
+	font-size: 12pt;
+	background-color: #B22222;
+	width: 100px;
+	border: 1px ridge;
+	filter: progid:DXImageTransform.Microsoft.Gradient (GradientType= '0' ,StartColorStr= '#ffffffff' ,EndColorStr= '#B22222' );
+	cursor: pointer;
+}
+
+.greenbutton {
+	color: Black;
+	font-weight: bold;
+	font-size: 12pt;
+	background-color: #6B8E23;
+	width: 100px;
+	border: 1px ridge;
+	filter: progid:DXImageTransform.Microsoft.Gradient (GradientType= '0' ,StartColorStr= '#ffffffff' ,EndColorStr= '#6B8E23' );
+	cursor: pointer;
+}
+	
+input:invalid {
+	border: 1px solid red;
+}
+
+.hidden {
+	display: none;
+}
+
+li {
+	padding - bottom : 3px;
+}
+
+fieldset {
+	border - color : white;
+	border - style : solid;
+	padding : 3px 3px 4px 3px;
+	border - width : 2px;
+	margin : 0px 2px 0px 2px;
+}
+
+tfoot tr td input {
+	font - weight : bold;
+}
+
+.trBorder {
+	border - bottom : 1px solid black;
+}
+
+.currancy {
+	text - align : right;
+}
+
+label {
+	font - size : 10pt;
+	font - weight : bold;
+	padding - right : 3px;
+}
+
+.Redbutton {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color :  # 5c9ccc;
+	border - color :  # b52b2e;
+	border - width : thick;
+	border : 1px rigid;
+	border - radius : 5px;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#d0e5f5');
+	cursor : pointer;
+}
+
+.graybutton {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color : silver;
+	border : 1px ridge;
+	border - radius : 5px;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#d0e5f5');
+	cursor : pointer;
+}
+
+.listButton {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color : silver;
+	border : 0px ridge;
+	border - radius : 5px;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#d0e5f5');
+	cursor : pointer;
+}
+
+.required {}
+
+span.labels {
+	display : block;
+	overflow : hidden;
+	padding : 0px 0px 0px 0px;
+}
+
+span.datepicker {
+	overflow : hidden;
+	padding : 0px 0px 0px 0px;
+}
+
+textarea {
+	font - size : 8pt;
+	font - family : Verdana,
+	arial,
+	helvetica,
+	sans - serif;
+	background - color :  # EEEEEE;
+	overflow : hidden;
+	width : 97.5 % ;
+}
+
+input[type = radio]{
+	width : auto;
+	padding : 0px 2px 0px 2px;
+}
+
+input[type = text] : not(.InputReadonly) {
+	background - color :  # EEEEEE;
+	font - size : 8pt;
+	font - family : Verdana,
+	arial,
+	helvetica,
+	sans - serif;
+	width : 100 % ;
+	box - sizing : border - box;
+	-webkit - box - sizing : border - box;
+	-moz - box - sizing : border - box;
+}
+
+body {
+	font - size : 10pt;
+	font - family : Verdana,
+	arial,
+	helvetica,
+	sans - serif;
+	color : Black;
+	background :  # fefefe;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	margin : 0px 0px 0px 0px;
+}
+
+select {
+	font - size : 8pt;
+	font - family : Verdana,
+	arial,
+	helvetica,
+	sans - serif;
+}
+
+table {
+	font - size : 8pt;
+	font - family : Verdana,
+	arial,
+	helvetica,
+	sans - serif;
+	width : 100 % ;
+}
+
+textarea : focus, input[type = text] : focus : not(.InputReadonly) {
+	background - color :  # FFFFFF;
+}
+
+.InputReadonly {
+	background - color : transparent;
+	border - width : 0px;
+}
+
+ul.ulHorizontal {
+	list - style - type : none;
+	margin : 10px 10px 10px 10px;
+}
+
+ul.ulHorizontal li {
+	display : inline;
+	padding : 3px 3px 3px 3px;
+}
+
+ul.ulVertical {
+	list - style - type : none;
+	margin : 5px 0px 0px 15px;
+}
+
+ul.ulVertical li {
+	padding : 0px 3px 0px 3px;
+}
+
+.bold {
+	font - weight : bold;
+}
+
+.button {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color :  # 94a6b5;
+	border : 1px ridge;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#94a6b5');
+	cursor : pointer;
+}
+
+.center {
+	text - align : center;
+}
+
+.fullwidth {
+	width : 100 % ;
+}
+
+.greenbutton {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color :  # 6B8E23;
+	border : 1px ridge;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#6B8E23');
+	cursor : pointer;
+}
+
+.heading {
+	color : Black;
+	border - bottom - style : double;
+	border - bottom - color : Black;
+}
+
+.help {
+	cursor : help;
+}
+
+.hidden {
+	display : none;
+}
+
+.highlight {
+	background - color :  # FFFF99;
+}
+
+.innerfieldset {
+	border : 1px solid # 800000;
+	padding : 4px;
+}
+
+.italics {
+	font - style : italic;
+}
+
+.minmax {
+	font - size : 8pt;
+	background - color : Transparent;
+	height : 15px;
+	width : 15px;
+	border : 0px;
+	cursor : pointer;
+	margin - right : 5px;
+}
+
+.move {
+	cursor : move;
+}
+
+.noborder {
+	background - color : transparent;
+	border - width : 0px;
+}
+
+.minButton {
+	background - color : transparent;
+	border - width : 0px;
+}
+
+.outerfieldset {
+	border : 1px solid # 363668;
+	border - top - width : 0px;
+	padding : 3px;
+}
+
+.pointer {
+	cursor : hand;
+}
+
+.redbutton {
+	color : Black;
+	font - weight : bold;
+	font - size : 8pt;
+	background - color :  # B22222;
+	border - color :  # B22222;
+	border : 1px ridge;
+	filter : progid : DXImageTransform.Microsoft.Gradient(GradientType = '0', StartColorStr = '#ffffffff', EndColorStr = '#B22222');
+	cursor : pointer;
+}
+
+.requiredInput {
+	border : 2px solid red;
+}
+
+.sectionlegend {
+	color : Maroon;
+}
+
+/*Pop Ups Start*/
+.fieldsetPopUp {
+	border : 4px ridge # 800000;
+	padding : 4px;
+	width : 100 % ;
+	height : 100 % ;
+	overflow : auto;
+}
+
+.divPopUp {
+	display : none;
+	position : fixed;
+	_position : absolute;
+	background :  # FFFFFF;
+	border : 2px solid # cecece;
+	z - index : 2;
+	padding : 5px;
+	font - size : 10px;
+}
+
+.PopupBackground {
+	display : none;
+	position : fixed;
+	_position : absolute;
+	height : 100 % ;
+	width : 100 % ;
+	top : 0;
+	left : 0;
+	background :  # 000000;
+	border : 1px solid # cecece;
+	z - index : 1;
+}
+/*Pop Ups End */
+
+.ui - tabs.ui - tabs - panel {
+	padding - left : .2em;
+	padding - right : .2em;
+}
+
+.invoiceTable {
+    border-collapse: collapse;
+    width: 100%;
+	empty-cells: hide;
+}
+
+.headerCells {
+    border: 1px solid;
+    text-align: left;
+    padding: 8px;
+}
+
+html,body { 
+	height:100%;
+}
+
+tr.noBorder td {
+  border-top: 0;
+  border-bottom: 0;
+}
+
+.totalFoot
+{
+	border: 1px solid;
+	border-right: 1px solid;
+	border-left: 1px solid;
+}
+.emptyCell
+{
+	border-top: 1px solid;
+}
